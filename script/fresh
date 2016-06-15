@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="${_fluentd_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
+  source "$shome/script/profile"
+
+  if [[ -x "$(type -P fluentd)" ]]; then
+    if [[ -x "$(type -P td-agent)" ]]; then
+      return 0
+    fi
+  fi
+
+  return 1
+}
+
+source sub "$0" "$@"

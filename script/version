@@ -5,7 +5,11 @@ function version {
   source "$shome/script/profile"
 
   local ver_fluentd="$(fluentd --version 2>&- | awk '{print $2}' || true)"
-  jq -n --arg fluentd "$ver_fluentd" '{fluentd: $fluentd}'
+  local ver_tdagent="$(td-agent --version 2>&- | awk '{print $2}' || true)"
+  jq -n \
+    --arg fluentd "$ver_fluentd" \
+    --arg tdagent "$ver_tdagent" \
+    '{fluentd: $fluentd, tdagent: $tdagent}'
 }
 
 version "$@"
