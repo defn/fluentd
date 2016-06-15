@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 
-gem "fluentd"
+gem "fluentd", '~> 0.12.19'

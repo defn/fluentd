@@ -5,7 +5,13 @@ function main {
   source "$shome/script/profile"
 
   mkdir -p "$shome/bin"
-  (set +f; ln -nfs $shome/vendor/bundle/bin/fluent* "$shome/bin/")
+  set +f
+  for f in $shome/vendor/bundle/bin/fluent*; do
+    if  [[ -x "$f" ]] ; then
+      ln -nfs "$f" "$shome/bin/"
+    fi
+  done
+  set -f
 }
 
 main
