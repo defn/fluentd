@@ -11,6 +11,13 @@ function bootstrap {
        block compile dmg 'http://packages.treasuredata.com.s3.amazonaws.com/2/macosx/td-agent-2.3.0-0.dmg' \
          'Td-agent' 'tdagent-2.3.0-0.pkg'
        ;;
+    Linux)
+      curl https://packages.treasuredata.com/GPG-KEY-td-agent | apt-key add -
+
+      source /etc/lsb-release
+      echo "deb http://packages.treasuredata.com/2/ubuntu/${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} contrib" > /etc/apt/sources.list.d/fluentd.list
+      sudo aptitude update
+      sudo aptitude install -y td-agent
    esac
 
   "$shome/script/update"
