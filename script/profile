@@ -2,7 +2,7 @@
 
 function profile {
   local shome="${_fluentd_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="$shome/bin:/opt/td-agent/usr/sbin:$PATH"
+  PATH="$shome/bin:$PATH"
 }
 
 profile
