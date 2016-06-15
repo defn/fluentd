@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="${_fluentd_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  source "$shome/script/profile"
+
+  local ver_fluentd="$(fluentd --version 2>&- | awk '{print $2}' || true)"
+  jq -n --arg fluentd "$ver_fluentd" '{fluentd: $fluentd}'
+}
+
+version "$@"

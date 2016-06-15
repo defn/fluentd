@@ -6,6 +6,13 @@ function bootstrap {
 
   block compile bundler
 
+  case "$(uname -s)" in
+    Darwin)
+       block compile dmg 'http://packages.treasuredata.com.s3.amazonaws.com/2/macosx/td-agent-2.3.0-0.dmg' \
+         'Td-agent' 'tdagent-2.3.0-0.pkg'
+       ;;
+   esac
+
   "$shome/script/update"
 }
 
