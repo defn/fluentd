@@ -4,7 +4,7 @@ function bootstrap {
   local shome="${_fluentd_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   source "$shome/script/profile"
 
-  block compile bundler --local
+  block compile bundler
 
   "$shome/script/update"
 }
